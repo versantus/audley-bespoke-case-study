@@ -191,6 +191,70 @@
       -webkit-text-fill-color: transparent;
     }
     
+    .screenshot {
+      margin: 30px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .screenshot img {
+      width: 100%;
+      display: block;
+    }
+    
+    .screenshot-caption {
+      background: var(--light-grey);
+      padding: 12px 20px;
+      font-size: 0.9rem;
+      color: var(--grey);
+      text-align: center;
+    }
+    
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .image-grid .screenshot {
+      margin: 0;
+    }
+    
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 30px 0;
+    }
+    
+    .comparison-item {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    .comparison-item img {
+      width: 100%;
+      display: block;
+    }
+    
+    .comparison-label {
+      background: var(--dark-purple);
+      color: var(--white);
+      padding: 10px 16px;
+      font-size: 0.85rem;
+      text-align: center;
+      font-weight: 600;
+    }
+    
+    @media (max-width: 600px) {
+      .image-grid, .comparison {
+        grid-template-columns: 1fr;
+      }
+    }
+    
     @media (max-width: 600px) {
       .hero { padding: 50px 20px; }
       .container { padding: 40px 20px; }
@@ -221,14 +285,41 @@
       <p><strong>The AI challenge:</strong> How do you generate over 1,200 photorealistic room images that look consistent, believable, and true to actual apartments, rather than the idealised spaces AI models tend to create?</p>
       <p><strong>The integration challenge:</strong> How do you turn design exploration into captured leads that feed directly into a sales pipeline, all while embedding seamlessly within an existing Drupal website?</p>
     </div>
+    
+    <div class="screenshot">
+      <img src="01-welcome.jpg" alt="Audley Bespoke welcome screen" loading="lazy">
+      <div class="screenshot-caption">The tool's welcome screen introduces the concept: personalised design inspiration in minutes</div>
+    </div>
 
     <h2>Discovery: understanding what actually matters</h2>
     <p>Our discovery phase focused on what mattered most to Audley's audience. The insights shaped everything that followed.</p>
     <p><strong>Room selection matters.</strong> Different owners care about different rooms. Some want to see the living room first; others prioritise the bedroom or study. The tool needed to let users start where their interest lies.</p>
+
+    <div class="image-grid">
+      <div class="screenshot">
+        <img src="02-room-selection.jpg" alt="Room selection screen" loading="lazy">
+        <div class="screenshot-caption">Users choose which room to visualise first</div>
+      </div>
+      <div class="screenshot">
+        <img src="03-layout-selection.jpg" alt="Layout selection screen" loading="lazy">
+        <div class="screenshot-caption">Multiple layouts per room type</div>
+      </div>
+    </div>
     <p><strong>Colour is deeply personal.</strong> Rather than offering named "themes," we used visual colour swatches based on Coat paint palettes. The 13 palettes were carefully curated to reflect the natural, muted tones that appeal to Audley's demographic, from soft greys and taupe through to warmer sand, terra, and green options.</p>
     <p><strong>Furnished vs. unfurnished.</strong> Early testing revealed people wanted to see both: the painted-but-empty room (to understand the colour scheme) and the fully furnished version. This led to a toggle that lets users flip between views.</p>
     <p><strong>Mobile-first, but not mobile-only.</strong> Most initial browsing happens on phones and tablets, but the tool also needed to shine on desktop when owners sit down for a more considered look.</p>
     <p>The eight furniture styles were chosen to span a broad range of tastes while remaining appropriate for the Audley brand: Contemporary Luxury, Classic Traditional, Scandi Minimalist, Mid-Century Modern, Industrial Chic, Art Deco Glamour, French Provincial, and Coastal Hamptons.</p>
+
+    <div class="image-grid">
+      <div class="screenshot">
+        <img src="04-style-selection.jpg" alt="Furniture style selection" loading="lazy">
+        <div class="screenshot-caption">Eight furniture styles to suit every taste</div>
+      </div>
+      <div class="screenshot">
+        <img src="05-palette-selection.jpg" alt="Colour palette selection" loading="lazy">
+        <div class="screenshot-caption">Coat-inspired colour palettes</div>
+      </div>
+    </div>
 
     <h2>The AI challenge: getting machines to respect reality</h2>
     <p>The most technically demanding aspect of the project was prompt engineering: getting AI-generated images to look right while respecting the constraints of real apartments.</p>
@@ -239,6 +330,19 @@
     <p><strong>Furniture blocking doors.</strong> A practical issue: the AI would place sofas in front of doors, making rooms look impractical for actual living.</p>
     <p>We developed a two-step generation process. First, an "unfurnished" variant is created: the empty room with painted walls and curtains in the selected palette. Then, the furnished variant is generated using the unfurnished image as its base. This ensures colour consistency and gives the AI a stable foundation.</p>
     <p>The result: 1,248 unique room visualisations across 6 room layouts, 8 furniture styles, and 13 colour palettes, each in furnished and unfurnished variants.</p>
+
+    <div class="comparison">
+      <div class="comparison-item">
+        <img src="living-room-1-greige-scandi-minimalist-unfurnished.png" alt="Living room unfurnished" loading="lazy">
+        <div class="comparison-label">Unfurnished: walls and curtains only</div>
+      </div>
+      <div class="comparison-item">
+        <img src="living-room-1-greige-scandi-minimalist-furnished.png" alt="Living room furnished" loading="lazy">
+        <div class="comparison-label">Furnished: complete room visualisation</div>
+      </div>
+    </div>
+    
+    <p style="text-align: center; color: var(--grey); font-size: 0.9rem; margin-top: -15px; margin-bottom: 30px;">The same room in Greige palette with Scandi Minimalist furniture: unfurnished vs furnished toggle</p>
 
     <h2>The business case: AI vs traditional photography</h2>
     <p>To appreciate what AI generation made possible, consider what the traditional approach would have required.</p>
@@ -289,6 +393,22 @@
       <li><strong>Accessible throughout.</strong> Proper ARIA labels, keyboard navigation, focus management, and semantic HTML</li>
     </ul>
 
+    <div class="screenshot">
+      <img src="06-preview.jpg" alt="Design preview screen" loading="lazy">
+      <div class="screenshot-caption">Users see a preview of their first design before entering the full gallery</div>
+    </div>
+
+    <div class="image-grid">
+      <div class="screenshot">
+        <img src="07-gallery-unfurnished.jpg" alt="Gallery showing unfurnished view" loading="lazy">
+        <div class="screenshot-caption">Gallery view: unfurnished (paint only)</div>
+      </div>
+      <div class="screenshot">
+        <img src="08-gallery-with-toggle.jpg" alt="Gallery with furnished toggle" loading="lazy">
+        <div class="screenshot-caption">Gallery view: furnished with toggle visible</div>
+      </div>
+    </div>
+
     <h2>Drupal integration</h2>
     <p>The React app embeds within the existing Drupal site, with form submissions flowing through Drupal's Webform REST API. Leads appear in Drupal's webform submissions alongside all other enquiry forms, fitting naturally into the existing sales workflow.</p>
     <p>A view-only mode allows Audley staff to see exactly what a customer selected: the same gallery, same liked images, via a URL with query parameters. Sales teams can walk into conversations already knowing an owner's taste.</p>
@@ -313,6 +433,22 @@
       </div>
     </div>
     <p>More importantly, the analytics give Audley's marketing team unprecedented insight into customer preferences: which room types are most popular, which furniture styles resonate, which colour palettes are selected most frequently, and where users drop off. This data feeds back into both the tool and broader marketing strategy.</p>
+
+    <div class="image-grid">
+      <div class="screenshot">
+        <img src="living-room-1-sand-coastal-hamptons-furnished.png" alt="Coastal Hamptons style" loading="lazy">
+        <div class="screenshot-caption">Living room: Sand palette, Coastal Hamptons</div>
+      </div>
+      <div class="screenshot">
+        <img src="living-room-2-taupe-contemporary-luxury-furnished.png" alt="Contemporary Luxury style" loading="lazy">
+        <div class="screenshot-caption">Living room 2: Taupe, Contemporary Luxury</div>
+      </div>
+    </div>
+    
+    <div class="screenshot">
+      <img src="master-bedroom-1-greige-scandi-minimalist-furnished.png" alt="Master bedroom Scandi Minimalist" loading="lazy">
+      <div class="screenshot-caption">Master bedroom: Greige palette, Scandi Minimalist style</div>
+    </div>
 
     <h2>What's next</h2>
     <p>The Audley Bespoke tool was built for expansion:</p>
